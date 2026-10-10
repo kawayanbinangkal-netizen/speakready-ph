@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpeakReady PH | Report with Confidence</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f6f7fb;color:#18213a}
+header{padding:20px 7%;background:#fff;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8eaf0}
+.logo{font-weight:800;font-size:22px;color:#5b4bdb}
+.hero{text-align:center;padding:65px 20px 35px;background:linear-gradient(135deg,#eeedff,#f8faff)}
+h1{font-size:clamp(32px,6vw,54px);margin:12px auto;max-width:750px}
+p{line-height:1.65;color:#657087}
+.hero p{max-width:600px;margin:15px auto}
+main{max-width:850px;margin:25px auto;padding:0 16px}
+.card{background:white;padding:25px;border-radius:18px;margin:18px 0;box-shadow:0 5px 25px #18213a0a}
+label{display:block;font-weight:700;margin:15px 0 7px}
+input,textarea,select{width:100%;padding:13px;border:1px solid #d9ddeb;border-radius:9px;font:inherit;background:#fff}
+textarea{min-height:100px;resize:vertical}
+button{background:#5b4bdb;color:white;border:0;padding:13px 18px;border-radius:9px;font-weight:bold;cursor:pointer;margin-top:15px}
+button:hover{background:#4535c2}
+.result{white-space:pre-wrap;background:#f7f6ff;padding:18px;border-radius:10px;margin-top:18px;line-height:1.7}
+.hidden{display:none}
+footer{text-align:center;padding:30px;color:#7a8295}
+</style>
+</head>
+<body>
+<header><div class="logo">🎤 SpeakReady PH</div><span>Study smarter.</span></header>
+<section class="hero">
+<div>✨ Your student reporting buddy</div>
+<h1>Report with confidence, not fear.</h1>
+<p>Gumawa ng report outline, mag-practice sa possible questions, at maghanda sa presentation mo — libre.</p>
+</section>
+<main>
+<section class="card">
+<h2>📝 Report Script Builder</h2>
+<p>Simulan ang report mo sa ilang detalye.</p>
+<label for="topic">Topic ng report</label>
+<input id="topic" placeholder="Hal. Climate Change">
+<label for="lang">Language</label>
+<select id="lang"><option>Taglish</option><option>Filipino</option><option>English</option></select>
+<label for="level">School level</label>
+<select id="level"><option>Senior High School</option><option>College</option><option>Junior High School</option></select>
+<label for="details">Instructions ng teacher (optional)</label>
+<textarea id="details" placeholder="Hal. 3 minutes, may introduction at conclusion"></textarea>
+<button onclick="makeScript()">Create my report outline</button>
+<div id="scriptResult" class="result hidden"></div>
+</section>
+<section class="card">
+<h2>🎯 Practice Teacher Questions</h2>
+<p>Ihanda ang sarili sa mga posibleng tanong pagkatapos mong mag-report.</p>
+<label for="qtopic">Report topic</label>
+<input id="qtopic" placeholder="Ilagay ang topic mo">
+<button onclick="makeQuestions()">Generate practice questions</button>
+<div id="questionResult" class="result hidden"></div>
+</section>
+<section class="card">
+<h2>💜 Quick Confidence Tips</h2>
+<ul>
+<li>Huminga nang malalim bago magsimula.</li>
+<li>Unang pangungusap lang muna ang kabisaduhin.</li>
+<li>Tumingin sa iba't ibang bahagi ng classroom.</li>
+<li>Kapag nakalimot, huminto sandali at magpatuloy.</li>
+<li>Mag-practice nang malakas kahit mag-isa.</li>
+</ul>
+</section>
+</main>
+<footer>© 2026 SpeakReady PH · Made for Filipino students 🇵🇭</footer>
+<script>
+function makeScript(){
+const t=document.getElementById('topic').value.trim();
+if(!t){alert('Ilagay muna ang topic mo!');return}
+const l=document.getElementById('lang').value;
+const d=document.getElementById('details').value.trim();
+const r=`SPEAKREADY PH — REPORT OUTLINE\n\nTOPIC: ${t}\nLANGUAGE: ${l}\n\n1. INTRODUCTION\nGood day everyone! Today, I will discuss ${t}. This topic is important because it helps us understand more about the world around us.\n\n2. MAIN DISCUSSION\n• Explain the meaning and background of ${t}.\n• Discuss three important facts or key points about the topic.\n• Give a real-life example to help your classmates understand.\n• Explain why this topic matters to students and society.\n\n3. CONCLUSION\nTo summarize, ${t} helps us understand important ideas that we can apply in real life. Thank you for listening. Are there any questions?\n\nTEACHER'S INSTRUCTIONS:\n${d||'Review your teacher’s requirements and add verified facts and examples.'}\n\nNOTE: This is a starter outline. Add accurate research and practice explaining each point in your own words.`;
+document.getElementById('scriptResult').textContent=r;
+document.getElementById('scriptResult').classList.remove('hidden');
+}
+function makeQuestions(){
+const t=document.getElementById('qtopic').value.trim();
+if(!t){alert('Ilagay muna ang topic mo!');return}
+const r=`PRACTICE: ${t}\n\n1. What is ${t}?\n2. Why is this topic important?\n3. What are its main characteristics or key points?\n4. Can you give a real-life example?\n5. What challenges or problems are related to it?\n6. How does it affect students or society?\n7. What did you learn while researching this topic?\n8. If you could explain one key point to a beginner, what would it be?\n\nCHALLENGE: Sagutin ang bawat tanong sa loob ng 30 seconds. Try answering without reading your notes.`;
+document.getElementById('questionResult').textContent=r;
+document.getElementById('questionResult').classList.remove('hidden');
+}
+</script>
+</body>
+</html>
